@@ -4,10 +4,12 @@ import {
   Get,
   Header,
   HttpCode,
+  HttpStatus,
   Param,
   Post,
   Query,
   Redirect,
+  Res,
 } from '@nestjs/common';
 import { CreateFuckerDto } from './create-fucker.dto';
 import { FuckerService } from './fucker.service';
@@ -20,6 +22,11 @@ export class FuckerController {
   create(@Body() data: CreateFuckerDto): string {
     console.log('data', data);
     return 'create fucker!!!!';
+  }
+
+  @Get('list')
+  getFuckerList(@Res() res): void {
+    res.status(HttpStatus.OK).json({ fucker: [1, 2] });
   }
 
   @Get()

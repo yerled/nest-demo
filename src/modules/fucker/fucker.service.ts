@@ -7,6 +7,6 @@ export class FuckerService {
   }
 
   getFuckerById(id: number): string {
-    return `Fucker ID: ${id}`;
+    return `yes! Fucker ID: ${id}`;
   }
 }

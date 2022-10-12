@@ -4,6 +4,7 @@ specifiers:
   '@nestjs/cli': ^9.0.0
   '@nestjs/common': ^9.0.0
   '@nestjs/core': ^9.0.0
+  '@nestjs/mapped-types': '*'
   '@nestjs/platform-express': ^9.0.0
   '@nestjs/schematics': ^9.0.0
   '@nestjs/testing': ^9.0.0
@@ -20,6 +21,7 @@ specifiers:
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
   rimraf: ^3.0.2
+  run-script-webpack-plugin: ^0.1.1
   rxjs: ^7.2.0
   source-map-support: ^0.5.20
   supertest: ^6.1.3
@@ -28,10 +30,13 @@ specifiers:
   ts-node: ^10.0.0
   tsconfig-paths: 4.1.0
   typescript: ^4.7.4
+  webpack: ^5.74.0
+  webpack-node-externals: ^3.0.0
 
 dependencies:
   '@nestjs/common': 9.1.4_yzt46al3aifnexifjjdb4dxxja
   '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
+  '@nestjs/mapped-types': 1.2.0_ede2d2wpocckpfb2dokw5tv6ii
   '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
   reflect-metadata: 0.1.13
   rimraf: 3.0.2
@@ -52,6 +57,7 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_hvbqyfstm4urdpm6ffpwfka4e4
   jest: 28.1.3_7fnffnpg6qxg3uvt2vx7t77ic4
   prettier: 2.7.1
+  run-script-webpack-plugin: 0.1.1
   source-map-support: 0.5.21
   supertest: 6.3.0
   ts-jest: 28.0.8_tdm5zcqep4nsvpmkmbrzs32za4
@@ -59,6 +65,8 @@ devDependencies:
   ts-node: 10.9.1_32pi7snzzbarjvfhwlvtgaxef4
   tsconfig-paths: 4.1.0
   typescript: 4.8.4
+  webpack: 5.74.0
+  webpack-node-externals: 3.0.0
 
 packages:
 
@@ -887,6 +895,23 @@ packages:
       uuid: 9.0.0
     transitivePeerDependencies:
       - encoding
+
+  /@nestjs/mapped-types/1.2.0_ede2d2wpocckpfb2dokw5tv6ii:
+    resolution: {integrity: sha512-NTFwPZkQWsArQH8QSyFWGZvJ08gR+R4TofglqZoihn/vU+ktHEJjMqsIsADwb7XD97DhiD+TVv5ac+jG33BHrg==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.8 || ^8.0.0 || ^9.0.0
+      class-transformer: ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0
+      class-validator: ^0.11.1 || ^0.12.0 || ^0.13.0
+      reflect-metadata: ^0.1.12
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      '@nestjs/common': 9.1.4_yzt46al3aifnexifjjdb4dxxja
+      reflect-metadata: 0.1.13
+    dev: false
 
   /@nestjs/platform-express/9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi:
     resolution: {integrity: sha512-SLJWDa6V54QrUvzKI4Eyt7gyrjV7F9FY1uHFihshjmQfpf0ebCGacR9jzNwf01aHl0BJX3DUn/KYteBjz6DJXw==}
@@ -4067,6 +4092,11 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
+    dev: true
+
+  /run-script-webpack-plugin/0.1.1:
+    resolution: {integrity: sha512-PrxBRLv1K9itDKMlootSCyGhdTU+KbKGJ2wF6/k0eyo6M0YGPC58HYbS/J/QsDiwM0t7G99WcuCqto0J7omOXA==}
+    engines: {node: '>=14'}
     dev: true
 
   /rxjs/6.6.7:
