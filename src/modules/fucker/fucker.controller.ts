@@ -11,7 +11,10 @@ import {
   Query,
   Redirect,
   Res,
+  UseFilters,
 } from '@nestjs/common';
+import { ForbiddenException } from 'src/common/forbidden.exception';
+import { HttpExceptionFilter } from 'src/common/http-exception.filter';
 import { CreateFuckerDto } from './create-fucker.dto';
 import { FuckerService } from './fucker.service';
 
@@ -21,12 +24,14 @@ export class FuckerController {
 
   @Post()
   create(@Body() data: CreateFuckerDto): string {
+    (undefined as any)();
     console.log('data', data);
     return 'create fucker!!!!';
   }
 
   @Get('list')
   getFuckerList(@Res() res): void {
+    throw new ForbiddenException();
     res.status(HttpStatus.OK).json({ fucker: [1, 2] });
   }
 
@@ -37,7 +42,7 @@ export class FuckerController {
   // @Redirect('https://www.baidu.com', 301)
   getFuckers(@Query() query): any {
     console.log('query', query);
-    return new HttpException('forbidden~~~~', HttpStatus.FORBIDDEN);
+    throw new HttpException('forbidden~~~~', HttpStatus.FORBIDDEN);
     // return this.fuckerService.getFuckers();
     // return { url: 'https://www.google.com' };
   }
