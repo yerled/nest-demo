@@ -12,9 +12,12 @@ import {
   Redirect,
   Res,
   UseFilters,
+  UsePipes,
 } from '@nestjs/common';
 import { ForbiddenException } from 'src/common/forbidden.exception';
 import { HttpExceptionFilter } from 'src/common/http-exception.filter';
+import { JoiValidationPipe } from 'src/common/joi-validate.pipe';
+import { ParseIntPipe } from 'src/common/parse-int.pipe';
 import { CreateFuckerDto } from './create-fucker.dto';
 import { FuckerService } from './fucker.service';
 
@@ -23,6 +26,7 @@ export class FuckerController {
   constructor(private readonly fuckerService: FuckerService) {}
 
   @Post()
+  // @UsePipes(new JoiValidationPipe({ id: 1 }))
   create(@Body() data: CreateFuckerDto): string {
     (undefined as any)();
     console.log('data', data);
@@ -58,7 +62,7 @@ export class FuckerController {
   // }
 
   @Get(':id')
-  async getFuckerById(@Param('id') id): Promise<string> {
-    return Promise.resolve(this.fuckerService.getFuckerById(Number(id)));
+  async getFuckerById(@Param('id', new ParseIntPipe()) id): Promise<string> {
+    return Promise.resolve(this.fuckerService.getFuckerById(id));
   }
 }
