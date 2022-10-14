@@ -11,24 +11,30 @@ import {
   Query,
   Redirect,
   Res,
+  SetMetadata,
   UseFilters,
+  UseGuards,
   UsePipes,
 } from '@nestjs/common';
 import { ForbiddenException } from 'src/common/forbidden.exception';
 import { HttpExceptionFilter } from 'src/common/http-exception.filter';
 import { JoiValidationPipe } from 'src/common/joi-validate.pipe';
 import { ParseIntPipe } from 'src/common/parse-int.pipe';
+import { Roles } from 'src/common/roles.decorator';
+import { RolesGuard } from 'src/common/roles.guard';
 import { CreateFuckerDto } from './create-fucker.dto';
 import { FuckerService } from './fucker.service';
 
 @Controller('fuckers')
+@UseGuards(RolesGuard)
 export class FuckerController {
   constructor(private readonly fuckerService: FuckerService) {}
 
   @Post()
   // @UsePipes(new JoiValidationPipe({ id: 1 }))
+  @Roles('admin')
   create(@Body() data: CreateFuckerDto): string {
-    (undefined as any)();
+    // (undefined as any)();
     console.log('data', data);
     return 'create fucker!!!!';
   }
