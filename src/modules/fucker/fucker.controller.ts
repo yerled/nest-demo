@@ -4,6 +4,7 @@ import {
   Get,
   Header,
   HttpCode,
+  HttpException,
   HttpStatus,
   Param,
   Post,
@@ -30,14 +31,15 @@ export class FuckerController {
   }
 
   @Get()
-  @HttpCode(205)
+  // @HttpCode(205)
   @Header('x-api-key', '123456')
   @Header('x-api-key2', '123456123456')
-  @Redirect('https://www.baidu.com', 301)
+  // @Redirect('https://www.baidu.com', 301)
   getFuckers(@Query() query): any {
     console.log('query', query);
+    return new HttpException('forbidden~~~~', HttpStatus.FORBIDDEN);
     // return this.fuckerService.getFuckers();
-    return { url: 'https://www.google.com' };
+    // return { url: 'https://www.google.com' };
   }
 
   @Get('/*/*')
